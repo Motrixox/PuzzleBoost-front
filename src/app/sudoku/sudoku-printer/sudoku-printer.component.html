@@ -1,0 +1,22 @@
+<app-sudoku-canvas [printerMode]="true"></app-sudoku-canvas>
+<app-sudoku-canvas [printerMode]="true"></app-sudoku-canvas>
+<app-sudoku-canvas [printerMode]="true"></app-sudoku-canvas>
+<app-sudoku-canvas [printerMode]="true"></app-sudoku-canvas>
+<app-sudoku-canvas [printerMode]="true"></app-sudoku-canvas>
+<app-sudoku-canvas [printerMode]="true"></app-sudoku-canvas>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="../../../assets/sudoku.png"> 
+        </div>
+        <div class="col" id="xd">
+            <h1>Want to print sudoku?</h1>
+            <h3>Click the button below to get 6 random sudoku boards on a A4 page!</h3>
+            <h5>(More customization options coming soon)</h5>
+            <button (click)="print()" class="btn btn-primary">Download as PDF</button>
+        </div>
+    </div>
+</div>
+
+

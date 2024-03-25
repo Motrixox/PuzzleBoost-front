@@ -1,0 +1,24 @@
+@if(!solverMode && !printerMode){
+    <div>
+        <div>Choose sudoku level</div>
+        <select #level (change)="loadSudokuOfLevel(+level.value)">
+            <option value="1">Very Easy</option>
+            <option value="2">Easy</option>
+            <option value="3">Medium</option>
+            <option value="4">Hard</option>
+            <option value="5">Very Hard</option>
+        </select>
+        <div id="sudokuInfo" style="width:100%">Sudoku ID: {{sudokuId}} | Difficulty = {{difficulty}}</div>
+    </div>
+}
+@else if(solverMode && !printerMode){
+    <h1>Sudoku Solver</h1>
+}
+<div>
+    <canvas #sudokuCanvas></canvas>
+</div>
+@if(solverMode && !printerMode){
+    <div>
+        <button class="btn btn-primary" (click)="sendSolve()">solve!</button>
+    </div>
+}

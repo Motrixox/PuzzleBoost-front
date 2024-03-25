@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="">
+        <img src="favicon.ico" alt="Puzzle Boost">
+    </a>
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a mat-button routerLink="">Home</a>
+        </li>
+        <mat-divider [vertical]="true"></mat-divider>
+        <li class="nav-item dropdown">
+          <a mat-button [matMenuTriggerFor]="sudoku">Sudoku<mat-icon>expand_more</mat-icon></a>
+          <mat-menu #sudoku="matMenu">
+            <a mat-menu-item routerLink="/sudoku">Play Sudoku</a>
+            <a mat-menu-item routerLink="/solver">Sudoku Solver</a>
+            <a mat-menu-item routerLink="/print">Print Sudoku</a>
+          </mat-menu>
+        </li>
+        <mat-divider [vertical]="true"></mat-divider>
+        <li class="nav-item">
+          <a mat-button disabled>Rummikub (Coming soon)<mat-icon>expand_more</mat-icon></a>
+        </li>
+        <li class="nav-item">
+            <i class="fa-brands fa-github"></i>
+        </li>
+      </ul>
+  </nav>

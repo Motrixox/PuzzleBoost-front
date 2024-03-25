@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="row">
+        <div id="canvas" class="col">
+            <app-sudoku-canvas #canvas solverMode="false"></app-sudoku-canvas>
+        </div>
+        <div class="col">
+            <app-sudoku-keyboard (keyPressed)="canvas.insertNumber($event)"></app-sudoku-keyboard>
+        </div>
+    </div>
+</div>

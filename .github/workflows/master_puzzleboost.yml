@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -25,15 +25,13 @@ jobs:
         run: |
           npm install
           npm run build --if-present
-
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
-
+          npm run test --if-present
+      
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: release.zip
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,20 +47,17 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: node-app
-
-      - name: Unzip artifact for deployment
-        run: unzip release.zip
       
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B7FDF9021DAF425DAA8D24CA28CB8614 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_23D3D17881E444B0A2E847D11231FF27 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_CB941A7C1DE849429E5793AEF7CB98C6 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_2724CDDA6D2D4D32B29DD065456AF0D1 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_6A290BEF0FB04F22BBA9F4BC4E9393D0 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_4797E727C6D7427DAA6207A7464EEA0B }}
 
       - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
+        id: deploy-to-webapp
         with:
           app-name: 'puzzleboost'
           slot-name: 'Production'
